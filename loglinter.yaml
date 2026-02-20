@@ -1,0 +1,27 @@
+# .loglinter.yaml – loglinter configuration
+#
+# All fields are optional. Missing fields use their default values.
+# -------------------------------------------------------------------
+
+# rules: selectively enable or disable individual rules.
+# All rules are enabled by default.
+rules:
+  lowercase: true
+  english: true
+  special: true
+  sensitive: true
+
+# sensitive_keywords: extend (not replace) the built-in list of sensitive
+# keywords. Values are matched case-insensitively as substrings of both the
+# log message text and the raw source expression (to catch variable names).
+sensitive_keywords:
+  - my_secret
+  - internal_token
+  - db_pass
+  - hello
+
+# allowed_special_chars: characters that the "special" rule should NOT flag.
+# Useful when your project intentionally uses certain punctuation in logs.
+# Example: allow exclamation mark and question mark
+# allowed_special_chars: "!?"
+allowed_special_chars: ""

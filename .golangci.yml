@@ -1,0 +1,23 @@
+# .golangci.yml – example configuration showing loglinter integration
+#
+# For golangci-lint v1.x custom module plugins:
+# 1. Build the plugin:   go build -buildmode=plugin -o loglinter.so ./plugin/
+# 2. Reference it here.
+# 3. Run: golangci-lint run --enable loglinter
+version: "2"
+
+run:
+  timeout: 5m
+
+linters-settings:
+  custom:
+    loglinter:
+      # Path to the compiled .so plugin file.
+      path: ./loglinter.so
+      description: "Checks log messages for style (lowercase, English-only, no special chars, no sensitive data)"
+      original-url: github.com/Wladim1r/loglinter
+
+issues:
+  # Don't limit the number of issues per linter so all violations are visible.
+  max-issues-per-linter: 0
+  max-same-issues: 0
